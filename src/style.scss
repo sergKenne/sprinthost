@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('./assets/css/reset.css');
+
+@import './assets/scss/vars.scss';
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+//COLORS
+// $coarse_wool : #1C1C28;
+// $stone_black:#28293D;
+// $delicate_violet:#8E90A6;
+// $majestic_magic:#555770;
+// $white: #ffffff;
+// $turquoise:#008580;
+// $grecian_isle:#02A69B;
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } 
+input:focus::-moz-placeholder { color:transparent; } 
+input:focus:-ms-input-placeholder { color:transparent; } 
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  @media (max-width: 736px) {
+    padding-left: 43px;
+    padding-right: 43px;
+  }
+  @media (max-width: 370px) {
+    padding-left: 33px;
+    padding-right: 33px;
+  }
+}
+
+//COMPONENTS
+.input {
+  //border: 1px solid red;
+  padding-bottom: 22px;
+  position: relative;
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+
+  &__field {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 8px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid $delicate_violet;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+
+    &::placeholder {
+      color: $delicate_violet;
+    }
+
+    &:focus {
+      border-bottom: 1px solid #26a69a;
+      box-shadow: 0 1px 0 0 #26a69a;
+    }
+    &:disabled {
+      background-color: transparent;
+      opacity: .6;
+    }
+
+  }
+  &__msg-error {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 400;
+    padding-left: 8px;
+    padding-top: 2px;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__input {
+    display: none;
+    &:checked ~ .checkbox__box > svg {
+      opacity: 1;
+    } 
+  }
+
+  &__box {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    border: 1.6px solid #555770;
+    margin-right: 14px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 11px;
+    height: 8.41px;
+    opacity: 0;
+  }
+
+  &__text-label {
+    color: $majestic_magic;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 14px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 4px;
+  color: $white;
+  background-color: $grecian_isle;
+  cursor: pointer;
+  transition: all .3s ease-out;
+
+  &--outline {
+    height: 40px;
+    background-color: $white;
+    color: $coarse_wool;
+    fill: $coarse_wool;
+    border: 1.6px solid $grecian_isle;
+
+    &:hover {
+      color: $white;
+      background-color: $grecian_isle;
+      border-color: $grecian_isle;
+      fill: $white;
+    }
+  }
+  &--dotted {
+    padding: 0;
+    background-color: $white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: $turquoise;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px dashed $turquoise;
+
+    &:hover {
+      background-color: $white!important;
+      color: $grecian_isle;
+    }
+
+  }
+
+  &:hover {
+    background-color: #2bbbad;
+  }
+
+  &:disabled {
+    color: #9F9F9F;
+    fill: #9F9F9F;
+    background-color: #DFDFDF;
+    cursor: not-allowed;
+    border-color: #9F9F9F;
+  }
+  &:active {
+    background-color: #26a69a;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.info {
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 24px;
+    color: $stone_black;
+    margin-bottom: 18px;
+  }
+
+  &__desc {
+    color: $majestic_magic;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 18px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    @media (max-width: 736px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+  &__btn {
+    width: 252px;
+  }
+  &__btn-grid {
+    width: 211px;
+  }
+}
+
+
+//---END COMPONENT---//
+
+.login {
+  padding-top: 64px;
+  padding-bottom: 156px;
+  @media (max-width: 736px) {
+    padding-top: 32px;
+    padding-bottom: 128px;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 28px;
+    padding-bottom: 16px;
+    margin-bottom: 64px;
+    border-bottom: 1px solid #00000029 ;
+    color: $coarse_wool;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    @media (max-width: 736px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__form-action {
+    width: 328px;
+    @media (max-width: 736px) {
+      width: 100%;
+    }
+  }
+
+  &__card {
+    width: 240px;
+    height: 188px;
+    border: 1px solid #FFBB0E;
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  &__form-input {
+    margin-bottom: 8px;
+  }
+
+  &__form-checkbox {
+    margin-top: 24px;
+    margin-bottom: 34px;
+  }
+
+  &__form-btn {
+    height: 48px;
+    width: 100%;
+  }
+
+  &__card-icon {
+    margin-bottom: 4px;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__card-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    color: $stone_black;
+    margin-bottom: 4px;
+  }
+  &__card-desc {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: $majestic_magic;
+  }
+
+  &__info {
+    margin-bottom: 64px;
+    @media (max-width: 736px) {
+      margin-bottom: 101px;
+    }
+  }
+
+  &__grid-info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    @media (max-width: 736px) {
+      flex-direction: column-reverse ;
+      align-items: flex-start;
+      gap: 24px;
+    }
+  }
+  
+  &__info-left {
+    width: 328px;
+    @media (max-width: 736px) {
+      width: 100%;
+    }
+  }
+
+  &__info-img {
+    margin-bottom: 4.38px;
+    @media (max-width: 736px) {
+      align-self:flex-end;
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #1C1C2873;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    @media (max-width: 736px) {
+      display: none;
+    }
+  }
+
+  &__btn-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__dialog {
+    background-color: $white;
+    width: 392px;
+    height: 516px;
+    border-radius: 8px;
+    padding: 32px;
+    @media (max-width: 736px) {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+    @media (max-width: 736px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__close-btn {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    text-align: left;
+    color: $delicate_violet;
+    border-bottom: 1px solid $turquoise;
+    cursor: pointer;
+    @media (max-width: 736px) {
+      display: none;
+    }
+  }
+
+  &__back-btn {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    color: $turquoise;
+    display: none;
+    align-items: center;
+    cursor: pointer;
+    @media (max-width: 736px) {
+      display: flex;
+    }
+  }
+
+  &__back-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    color: $stone_black;
+    margin-bottom: 24px;
+  }
+
+  &__form-input {
+    margin-bottom: 8px;
+  }
+
+  &__form-checkbox {
+    margin-top: 24px;
+    margin-bottom: 34px;
+  }
+
+  &__form-btn {
+    height: 48px;
+    width: 100%;
+  }
+
+}
