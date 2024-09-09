@@ -4,7 +4,7 @@
       <h3 class="login__title">Смена пароля</h3>
       <form @submit.prevent="handleSumit" class="login__form">
         <div class="login__card">
-          <img src="./assets/icons/info.svg" alt="" class="login__card-icon">
+          <img :src="infoUrl" alt="info" class="login__card-icon">
           <h5 class="login__card-title">Используйте сложные пароли и не сохраняйте их в браузере.</h5>
           <p class="login__card-desc">Данные меры цифровой безопасности помогают предотвратить взлом профиля.</p>
         </div>
@@ -22,7 +22,8 @@
           <InputCheckbox inputClassName='login__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
             inputType='checkbox' />
 
-          <Button buttonText='Сменить пароль' buttonClassName='login__form-btn' :disabled="store.state.loading ? true : false"/>
+          <Button buttonText='Сменить пароль' buttonClassName='login__form-btn'
+            :disabled="store.state.loading ? true : false" />
 
         </div>
       </form>
@@ -48,11 +49,11 @@
             <Button buttonText='Связанные аккаунты' buttonClassName='info__btn-grid' buttonClassType='btn--outline' />
           </div>
         </div>
-        <img src="./assets/img/chat.svg" alt="" class="login__info-img">
+        <img :src="catUrl" alt="cat" class="login__info-img">
       </div>
     </div>
     <Teleport to="#modal">
-      <Modal v-if="store.state.isShowModal"/>
+      <Modal v-if="store.state.isShowModal" />
     </Teleport>
     <Teleport to="#modalAlert">
       <ModalAlert v-if="store.state.isShowModalAlert" />
@@ -68,9 +69,9 @@
   import Modal from './components/modal/Modal.vue'
   import ModalAlert from './components/ModalAlert.vue'
   import openIcon from './assets/icons/open.svg' 
-  // import cat from './assets/img/chat.svg'
-  // import info from './assets/img/info.svg'
-
+  
+  const catUrl = new URL('/src/assets/images/cat.svg', import.meta.url)
+  const infoUrl = new URL('/src/assets/images/info.svg', import.meta.url)
   const store = useStore()
   
    const handleSumit = () => {
