@@ -4,7 +4,7 @@
       <h3 class="login__title">Смена пароля</h3>
       <form @submit.prevent="handleSumit" class="login__form">
         <div class="login__card">
-          <img src="./assets/icons/info.svg" alt="" class="login__card-icon">
+          <img src="../public/img/info.svg" alt="" class="login__card-icon">
           <h5 class="login__card-title">Используйте сложные пароли и не сохраняйте их в браузере.</h5>
           <p class="login__card-desc">Данные меры цифровой безопасности помогают предотвратить взлом профиля.</p>
         </div>
@@ -48,7 +48,7 @@
             <Button buttonText='Связанные аккаунты' buttonClassName='info__btn-grid' buttonClassType='btn--outline' />
           </div>
         </div>
-        <img src="./assets/img/chat.svg" alt="" class="login__info-img">
+        <img src="../public/img/chat.svg" alt="" class="login__info-img">
       </div>
     </div>
     <Teleport to="#modal">
@@ -113,8 +113,6 @@
 
         setTimeout(() => {
           store.commit('setShowModalAlert', false)
-          //store.commit('resetInputValues')
-          //store.commit('matchPassword', false)
           store.dispatch('actionError', false)
           store.dispatch('actionSuccess', false)
         }, 4000)
