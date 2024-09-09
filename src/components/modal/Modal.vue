@@ -7,11 +7,13 @@
       <ModalForm>
         <p v-if="!store.state.isMatchPassword" class="login__matchErrorPasswordMsg">Пароли должны совпадать</p>
         <InputBlock inputClassName='modal__form-input' inputLabel="Новый пароль" inputPlaceholder='Введите новый пароль'
-          inputType='password' inputKey='modalPass' inputName='password' :errorText="store.state.errorTextPassword" />
+          inputType='password' inputKey='modalPass' inputName='password' :errorText="store.state.errorTextPassword"
+          :inputValue="store.state.inputValuePassword" />
 
         <InputBlock inputClassName='modal__form-input' inputLabel="Повторите новый пароль"
           inputPlaceholder='Повторите новый пароль' inputType='password' inputKey='modalconfirmPass'
-          inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword" />
+          inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword"
+          :inputValue="store.state.inputValueConfirmPassword" />
 
         <InputCheckbox inputClassName='modal__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
           inputType='checkbox' />

@@ -13,11 +13,12 @@
 
           <InputBlock inputClassName='login__form-input' inputLabel="Новый пароль"
             inputPlaceholder='Введите новый пароль' inputType='password' inputKey='loginPass' inputName='password'
-            :errorText="store.state.errorTextPassword" />
+            :errorText="store.state.errorTextPassword" :inputValue="store.state.inputValuePassword" />
 
           <InputBlock inputClassName='login__form-input' inputLabel="Повторите новый пароль"
             inputPlaceholder='Повторите новый пароль' inputType='password' inputKey='loginconfirmPass'
-            inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword" />
+            inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword"
+            :inputValue="store.state.inputValueConfirmPassword" />
 
           <InputCheckbox inputClassName='login__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
             inputType='checkbox' />
@@ -118,6 +119,7 @@
           store.commit('setShowModalAlert', false)
           store.dispatch('actionError', false)
           store.dispatch('actionSuccess', false)
+          store.commit('resetInputValues')
         }, 4000)
       } else {
         store.commit('matchPassword', false)

@@ -2,7 +2,7 @@
   <div :class="`input ${inputClassName}`">
     <label v-if="isLabel" class="input__label" :for="inputKey">{{ inputLabel }}</label>
     <input :type="inputType" :id="inputKey" class="input__field" :name="inputName" :placeholder="inputPlaceholder"
-      @input="onInputChange">
+      @input="onInputChange" :value="inputValue">
 
     <p v-if="errorText" class="input__msg-error">Пароль должен быть не меньше 8 символов, содержать одну цифру
       и одну заглавную букву</p>
@@ -40,6 +40,9 @@
       },
       errorText: {
         type: String,
+      },
+      inputValue: {
+        type: String
       }
     },
     methods: {
