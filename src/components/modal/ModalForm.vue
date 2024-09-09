@@ -52,7 +52,6 @@ const handleSubmit = () => {
       setTimeout(() => {
         store.commit('setShowModalAlert', false)
         store.commit('resetInputValues')
-        //store.commit('matchPassword', false)
         store.dispatch('actionError', false)
         store.dispatch('actionSuccess', false)
       }, 4000)

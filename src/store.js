@@ -15,7 +15,6 @@ const store = createStore({
             error: false,
             isShowModalAlert: false,
             isShowModal: true,
-            // modalName:""
         };
     },
     mutations: {
@@ -55,9 +54,6 @@ const store = createStore({
         state.inputValueConfirmPassword = ""
         state.inputValuePassword = ""
       },
-      // setModalName: (state,name) => {
-      //   state.modalName = name
-      // }
     },
     actions: {
         actionSuccess: ({ commit }, payload) => {
