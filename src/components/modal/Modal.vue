@@ -24,6 +24,7 @@
 </template>
 
 <script setup>
+import {onMounted} from 'vue'
 import { useStore } from 'vuex'
 import ModalDialog from './ModalDialog.vue'
 import ModalCloseBtn from './ModalCloseBtn.vue'
@@ -35,5 +36,14 @@ import InputCheckbox from '../InputCheckbox.vue'
 import Button from '../Button.vue'
 
 const store = useStore()
+
+onMounted(() => {
+  const modal = document.querySelector('.modal');
+  modal.addEventListener('click', function (e) {
+    if (e.target.className == 'modal') {
+      store.commit('closeModal')
+    }
+  })
+})
 
 </script>
