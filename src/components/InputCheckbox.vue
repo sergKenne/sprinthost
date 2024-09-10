@@ -1,5 +1,5 @@
 <template>
-  <label :class="`checkbox ${inputClassName}`">
+  <label class="checkbox">
     <input type="checkbox" class="checkbox__input"/>
     <span class="checkbox__box">
       <svg class="checkbox__icon">
@@ -19,10 +19,10 @@
         type: String,
         default: () => 'text'
       },
-      inputClassName: {
-        type: String,
-        default: () => ''
-      },
+      // inputClassName: {
+      //   type: String,
+      //   default: () => ''
+      // },
       inputLabel: {
         type: String
       }

@@ -1,5 +1,5 @@
 <template>
-  <button :class="`btn ${buttonClassType} ${buttonClassName}`">
+  <button class="btn">
     <span class="btn__text">{{ buttonText }}</span>
     <svg v-if="withIcon" class="btn__icon">
       <use :xlink:href="`#${buttonIcon}`" />
@@ -21,14 +21,10 @@
         type: Boolean,
         default: () => false
       },
-      buttonClassName: {
-        type: String,
-        default: ()=>''
-      },
-      buttonClassType: {
-        type: String,
-        default: () => ''
-      }
+      // buttonClassType: {
+      //   type: String,
+      //   default: () => ''
+      // }
     },
   }
 </script>

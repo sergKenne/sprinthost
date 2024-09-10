@@ -11,20 +11,19 @@
         <div class="login__form-action">
           <p v-if="!store.state.isMatchPassword" class="login__matchErrorPasswordMsg">Пароли должны совпадать</p>
 
-          <InputBlock inputClassName='login__form-input' inputLabel="Новый пароль"
-            inputPlaceholder='Введите новый пароль' inputType='password' inputKey='loginPass' inputName='password'
-            :errorText="store.state.errorTextPassword" :inputValue="store.state.inputValuePassword" />
+          <InputBlock class='login__form-input' inputLabel="Новый пароль" inputPlaceholder='Введите новый пароль'
+            inputType='password' inputKey='loginPass' inputName='password' :errorText="store.state.errorTextPassword"
+            :inputValue="store.state.inputValuePassword" />
 
-          <InputBlock inputClassName='login__form-input' inputLabel="Повторите новый пароль"
+          <InputBlock class='login__form-input' inputLabel="Повторите новый пароль"
             inputPlaceholder='Повторите новый пароль' inputType='password' inputKey='loginconfirmPass'
             inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword"
             :inputValue="store.state.inputValueConfirmPassword" />
 
-          <InputCheckbox inputClassName='login__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
+          <InputCheckbox class='login__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
             inputType='checkbox' />
 
-          <Button buttonText='Сменить пароль' buttonClassName='login__form-btn'
-            :disabled="store.state.loading ? true : false" />
+          <Button buttonText='Сменить пароль' class='login__form-btn' :disabled="store.state.loading" />
 
         </div>
       </form>
@@ -34,10 +33,10 @@
           Сменить пароль, узнать сервер и IP адрес можно в разделе «Управление сайтами».
         </p>
         <div class="info__buttons">
-          <Button buttonText='Управление сайтами' buttonClassName='info__btn' buttonClassType='btn--outline'
+          <Button buttonText='Управление сайтами' class='btn--outline info__btn'
             :withIcon='true' :buttonIcon='openIcon' />
 
-          <Button buttonText='Как настроить?' buttonClassType='btn--dotted' />
+          <Button buttonText='Как настроить?' class='btn--dotted' />
         </div>
       </div>
       <div class="login__grid-info">
@@ -47,7 +46,7 @@
             Сменить пароль, узнать сервер и IP адрес можно в разделе «Управление сайтами».
           </p>
           <div class="info__buttons">
-            <Button buttonText='Связанные аккаунты' buttonClassName='info__btn-grid' buttonClassType='btn--outline' />
+            <Button buttonText='Связанные аккаунты' class='info__btn-grid btn--outline' />
           </div>
         </div>
         <img :src="catUrl" alt="cat" class="login__info-img">
@@ -93,34 +92,7 @@
       if (store.state.inputValuePassword === store.state.inputValueConfirmPassword) {
         store.commit('matchPassword', true)
         store.commit('setShowModalAlert', true)
-        const fetch = new Promise((resolve, reject) => {
-          store.dispatch('actionLoading', true)
-          setTimeout(() => {
-            let status = Math.round(Math.random())
-            if (status == 1) {
-              status = true
-              resolve(status)
-            } else {
-              status = false
-              reject(status)
-            }
-          }, 3000)
-        });
-
-        fetch.then((result) => {
-          store.dispatch('actionSuccess', result)
-          store.dispatch('actionLoading', false)
-        }).catch((err) => {
-          store.dispatch('actionError', !err)
-          store.dispatch('actionLoading', false)
-        })
-
-        setTimeout(() => {
-          store.commit('setShowModalAlert', false)
-          store.dispatch('actionError', false)
-          store.dispatch('actionSuccess', false)
-          store.commit('resetInputValues')
-        }, 4000)
+        store.dispatch('actionPost')
       } else {
         store.commit('matchPassword', false)
       }

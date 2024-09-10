@@ -56,15 +56,38 @@ const store = createStore({
       },
     },
     actions: {
-        actionSuccess: ({ commit }, payload) => {
-            commit('fetchSuccess', payload);
-        },
-        actionLoading: ({ commit }, payload) => {
-            commit('fetchLoading', payload);
-        },
-        actionError: ({ commit }, payload) => {
-            commit('fetchError', payload);
-        },
+        actionPost: ({commit}) => {
+            const fetch = new Promise((resolve, reject) => {
+                commit('fetchLoading', true);
+                setTimeout(() => {
+                    let status = Math.round(Math.random());
+                    if (status == 1) {
+                        status = true;
+                        resolve(status);
+                    } else {
+                        status = false;
+                        reject(status);
+                    }
+                }, 3000);
+            });
+
+            fetch
+                .then((result) => {
+                    commit('fetchSuccess', result);
+                    commit('fetchLoading', false);
+                })
+                .catch((err) => {
+                    commit('fetchError', !err);
+                    commit('fetchLoading', false);
+								});
+				
+								setTimeout(() => {
+                  commit('setShowModalAlert', false);
+                  commit('fetchError', false);
+                  commit('fetchSuccess', false);
+                  commit('resetInputValues');
+                }, 4000);
+        }
     },
 });
 

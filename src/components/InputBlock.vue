@@ -1,5 +1,5 @@
 <template>
-  <div :class="`input ${inputClassName}`">
+  <div class="input">
     <label v-if="isLabel" class="input__label" :for="inputKey">{{ inputLabel }}</label>
     <input :type="inputType" :id="inputKey" class="input__field" :name="inputName" :placeholder="inputPlaceholder"
       @input="onInputChange" :value="inputValue">
@@ -26,10 +26,6 @@
       },
       inputKey: {
         type: String
-      },
-      inputClassName: {
-        type: String,
-        default: () => ''
       },
       isLabel: {
         type: Boolean,

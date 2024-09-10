@@ -336,7 +336,10 @@ body {
     &__msg {
       font-size: 24px;
       font-weight: 800;
-      color:#28293D;
+      color: green;
 
+      &--error {
+        color: red
+      }
     }
 }
