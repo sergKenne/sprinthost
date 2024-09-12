@@ -21,10 +21,6 @@
         type: Boolean,
         default: () => false
       },
-      // buttonClassType: {
-      //   type: String,
-      //   default: () => ''
-      // }
     },
   }
 </script>

@@ -49,14 +49,14 @@ const store = createStore({
         },
         closeModal: (state, payload) => {
             state.isShowModal = payload;
-      },
-      resetInputValues: (state) => {
-        state.inputValueConfirmPassword = ""
-        state.inputValuePassword = ""
-      },
+        },
+        resetInputValues: (state) => {
+            state.inputValueConfirmPassword = '';
+            state.inputValuePassword = '';
+        },
     },
     actions: {
-        actionPost: ({commit}) => {
+        actionPost: ({ commit }) => {
             const fetch = new Promise((resolve, reject) => {
                 commit('fetchLoading', true);
                 setTimeout(() => {
@@ -79,17 +79,16 @@ const store = createStore({
                 .catch((err) => {
                     commit('fetchError', !err);
                     commit('fetchLoading', false);
-								});
-				
-								setTimeout(() => {
-                  commit('setShowModalAlert', false);
-                  commit('fetchError', false);
-                  commit('fetchSuccess', false);
-                  commit('resetInputValues');
-                }, 4000);
-        }
+                });
+
+            setTimeout(() => {
+                commit('setShowModalAlert', false);
+                commit('fetchError', false);
+                commit('fetchSuccess', false);
+                commit('resetInputValues');
+            }, 4000);
+        },
     },
 });
 
-
-export default store
+export default store;

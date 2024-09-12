@@ -19,10 +19,6 @@
         type: String,
         default: () => 'text'
       },
-      // inputClassName: {
-      //   type: String,
-      //   default: () => ''
-      // },
       inputLabel: {
         type: String
       }
