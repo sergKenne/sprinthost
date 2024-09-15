@@ -11,19 +11,19 @@
         <div class="login__form-action">
           <p v-if="!store.state.isMatchPassword" class="login__matchErrorPasswordMsg">Пароли должны совпадать</p>
 
-          <InputBlock class='login__form-input' inputLabel="Новый пароль" inputPlaceholder='Введите новый пароль'
-            inputType='password' inputKey='loginPass' inputName='password' :errorText="store.state.errorTextPassword"
-            :inputValue="store.state.inputValuePassword" />
+          <InputBlock class='login__form-input' label="Новый пароль" placeholder='Введите новый пароль'
+            type='password' key='loginPass' name='password' :errorText="store.state.errorTextPassword"
+            :value="store.state.inputValuePassword" />
 
-          <InputBlock class='login__form-input' inputLabel="Повторите новый пароль"
-            inputPlaceholder='Повторите новый пароль' inputType='password' inputKey='loginconfirmPass'
-            inputName='confirmPassword' :errorText="store.state.errorTextConfirmPassword"
-            :inputValue="store.state.inputValueConfirmPassword" />
+          <InputBlock class='login__form-input' label="Повторите новый пароль"
+            placeholder='Повторите новый пароль' type='password' key='loginconfirmPass'
+            name='confirmPassword' :errorText="store.state.errorTextConfirmPassword"
+            :value="store.state.inputValueConfirmPassword" />
 
-          <InputCheckbox class='login__form-checkbox' inputLabel='Завершить сеансы на других устройствах'
-            inputType='checkbox' />
+          <InputCheckbox class='login__form-checkbox' label='Завершить сеансы на других устройствах'
+            type='checkbox' />
 
-          <Button buttonText='Сменить пароль' class='login__form-btn' :disabled="store.state.loading" />
+          <Button text='Сменить пароль' class='login__form-btn' :disabled="store.state.loading" />
 
         </div>
       </form>
@@ -33,10 +33,10 @@
           Сменить пароль, узнать сервер и IP адрес можно в разделе «Управление сайтами».
         </p>
         <div class="info__buttons">
-          <Button buttonText='Управление сайтами' class='btn--outline info__btn'
-            :withIcon='true' :buttonIcon='openIcon' />
+          <Button text='Управление сайтами' class='btn--outline info__btn'
+            :withIcon='true' :icon='openIcon' />
 
-          <Button buttonText='Как настроить?' class='btn--dotted' />
+          <Button text='Как настроить?' class='btn--dotted' />
         </div>
       </div>
       <div class="login__grid-info">
@@ -46,7 +46,7 @@
             Сменить пароль, узнать сервер и IP адрес можно в разделе «Управление сайтами».
           </p>
           <div class="info__buttons">
-            <Button buttonText='Связанные аккаунты' class='info__btn-grid btn--outline' />
+            <Button text='Связанные аккаунты' class='info__btn-grid btn--outline' />
           </div>
         </div>
         <img :src="catUrl" alt="cat" class="login__info-img">
@@ -75,8 +75,7 @@
   const store = useStore()
   
    const handleSumit = () => {
-
-    if (store.state.isValidPassword) {
+    if (store.state.isValidPassword && inputValuePassword.length != 0) {
       store.commit('setErrorTextPassword','')
     } else {
       store.commit('setErrorTextPassword', 'Пароль должен быть не меньше 8 символов, содержать одну цифруи одну заглавную букву')
@@ -88,7 +87,7 @@
       store.commit('setErrorTextConfirmPassword', 'Пароль должен быть не меньше 8 символов, содержать одну цифруи одну заглавную букву')
     }
     
-    if (store.state.isValidPassword && store.state.isValidConfirmPassword) {
+    if (store.state.isValidPassword) {
       if (store.state.inputValuePassword === store.state.inputValueConfirmPassword) {
         store.commit('matchPassword', true)
         store.commit('setShowModalAlert', true)

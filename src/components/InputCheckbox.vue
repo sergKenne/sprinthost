@@ -6,7 +6,7 @@
         <use :xlink:href="`#${checkIcon}`" />
       </svg>
     </span>
-    <span class="checkbox__text-label">{{ inputLabel }}</span>
+    <span class="checkbox__text-label">{{ label }}</span>
   </label>
 </template>
 
@@ -15,11 +15,11 @@
   export default {
     name: "InputCheckbox",
     props: {
-      inputType: {
+      type: {
         type: String,
         default: () => 'text'
       },
-      inputLabel: {
+      label: {
         type: String
       }
   },

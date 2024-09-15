@@ -1,8 +1,8 @@
 <template>
   <div class="input">
-    <label v-if="isLabel" class="input__label" :for="inputKey">{{ inputLabel }}</label>
-    <input :type="inputType" :id="inputKey" class="input__field" :name="inputName" :placeholder="inputPlaceholder"
-      @input="onInputChange" :value="inputValue">
+    <label v-if="isLabel" class="input__label" :for="key">{{ label }}</label>
+    <input :type="type" :id="key" class="input__field" :name="name" :placeholder="placeholder"
+      @input="onInputChange" :value="value">
 
     <p v-if="errorText" class="input__msg-error">Пароль должен быть не меньше 8 символов, содержать одну цифру
       и одну заглавную букву</p>
@@ -13,31 +13,31 @@
 export default {
   name: "InputBlock",
   props: {
-    inputType: {
+    type: {
       type: String,
       default: () => 'text'
     },
-    inputName: {
+    name: {
       type: String
     },
-    inputPlaceholder: {
+    placeholder: {
       type: String,
       default: () => ''
     },
-    inputKey: {
+    key: {
       type: String
     },
     isLabel: {
       type: Boolean,
       default: () => true
     },
-    inputLabel: {
+    label: {
       type: String
     },
     errorText: {
       type: String,
     },
-    inputValue: {
+    value: {
       type: String
     }
   },

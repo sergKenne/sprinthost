@@ -1,8 +1,8 @@
 <template>
   <button class="btn">
-    <span class="btn__text">{{ buttonText }}</span>
+    <span class="btn__text">{{ text }}</span>
     <svg v-if="withIcon" class="btn__icon">
-      <use :xlink:href="`#${buttonIcon}`" />
+      <use :xlink:href="`#${icon}`" />
     </svg>
   </button>
 </template>
@@ -11,10 +11,10 @@
   export default {
     name: "Button",
     props: {
-      buttonText: {
+      text: {
         type: String,
       },
-      buttonIcon: {
+      icon: {
         type: String,
       },
       withIcon: {
